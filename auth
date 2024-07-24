@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Redirecting...</title>
+    <script type="text/javascript">
+        // URL parametrelerini yakalayın
+        const params = new URLSearchParams(window.location.search);
+        const code = params.get('code');
+        // Kod ile uygulamaya geri yönlendirin
+        window.location.href = `myapp://auth?code=${code}`;
+    </script>
+</head>
+<body>
+    <p>Redirecting...</p>
+</body>
+</html>
