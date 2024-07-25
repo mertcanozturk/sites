@@ -11,12 +11,7 @@
             let redirectUrl = 'virtulove://auth?';
 
     
-            if (accessToken) {
-                redirectUrl += 'access_token=' + encodeURIComponent(accessToken) + '&';
-            }
-
-            // Son '&' karakterini kaldırın
-            redirectUrl = redirectUrl.slice(0, -1);
+             redirectUrl += 'access_token=' + encodeURIComponent(accessToken);
 
             // Yönlendirme
             window.location.href = redirectUrl;
