@@ -7,35 +7,25 @@
         window.onload = function() {
             const params = new URLSearchParams(window.location.search);
             const code = params.get('code');
-            const accessToken = params.get('access_token');
             const name = params.get('name');
             const email = params.get('email');
 
-            if (code || accessToken) {
-                // Kod ve diğer bilgilerle uygulamaya geri yönlendirin
                 let redirectUrl = 'virtulove://auth?';
 
                 if (code) {
-                    redirectUrl += `code=${code}&`;
-                }
-                if (accessToken) {
-                    redirectUrl += `access_token=${accessToken}&`;
+                    redirectUrl += 'code=${code}&';
                 }
                 if (name) {
-                    redirectUrl += `name=${name}&`;
+                    redirectUrl += 'name=${name}&';
                 }
                 if (email) {
-                    redirectUrl += `email=${email}&`;
+                    redirectUrl += 'email=${email}&';
                 }
 
-                // Son eklenen '&' karakterini kaldır
                 redirectUrl = redirectUrl.slice(0, -1);
 
                 window.location.href = redirectUrl;
-            } else {
-                // Kod veya access token parametresi bulunamazsa hata mesajı göster
-                document.body.innerHTML = '<p>Error: Code or access token parameter not found</p>';
-            }
+        
         }
     </script>
 </head>
