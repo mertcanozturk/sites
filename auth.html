@@ -6,12 +6,30 @@
         // URL parametrelerini yakalayın
         window.onload = function() {
             const params = new URLSearchParams(window.location.search);
-            const accessToken = params.get('code');
+            const code = params.get('code');
+            const accessToken = params.get('access_token');
+            const name = params.get('name');
+            const email = params.get('email');
 
+            // Temel URL
             let redirectUrl = 'virtulove://auth?';
 
-    
-             redirectUrl += 'code=' + encodeURIComponent(accessToken);
+            // Parametreleri ekleyin
+            if (code) {
+                redirectUrl += 'code=' + encodeURIComponent(code) + '&';
+            }
+            if (accessToken) {
+                redirectUrl += 'access_token=' + encodeURIComponent(accessToken) + '&';
+            }
+            if (name) {
+                redirectUrl += 'name=' + encodeURIComponent(name) + '&';
+            }
+            if (email) {
+                redirectUrl += 'email=' + encodeURIComponent(email) + '&';
+            }
+
+            // Son '&' karakterini kaldırın
+            redirectUrl = redirectUrl.slice(0, -1);
 
             // Yönlendirme
             window.location.href = redirectUrl;
@@ -19,6 +37,6 @@
     </script>
 </head>
 <body>
-    <p>...Redirecting...</p>
+    <p>Redirecting...</p>
 </body>
 </html>
