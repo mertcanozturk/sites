@@ -6,12 +6,14 @@
         // URL parametrelerini yakalayın
         window.onload = function() {
             const params = new URLSearchParams(window.location.search);
-            const accessToken = params.get('access_token');
+            const code = params.get('code');
 
-            if (accessToken) {
-                window.location.href = `virtulove://auth?access_token=${accessToken}`;
+            if (code) {
+                // Kod ile uygulamaya geri yönlendirin
+                window.location.href = `virtulove://auth?code=${code}`;
             } else {
-                document.body.innerHTML = '<p>Error: Access token parameter not found</p>';
+                // Kod parametresi bulunamazsa hata mesajı göster
+                document.body.innerHTML = '<p>Error: Code parameter not found</p>';
             }
         }
     </script>
