@@ -1,31 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>..Redirecting...</title>
+    <title>Redirecting...</title>
     <script type="text/javascript">
         // URL parametrelerini yakalayın
         window.onload = function() {
             const params = new URLSearchParams(window.location.search);
-            const code = params.get('code');
-            const name = params.get('name');
-            const email = params.get('email');
+            const accessToken = params.get('access_token');
 
-                let redirectUrl = 'virtulove://auth?';
+            let redirectUrl = 'virtulove://auth?';
 
-                if (code) {
-                    redirectUrl += 'code=${code}&';
-                }
-                if (name) {
-                    redirectUrl += 'name=${name}&';
-                }
-                if (email) {
-                    redirectUrl += 'email=${email}&';
-                }
+    
+            if (accessToken) {
+                redirectUrl += 'access_token=' + encodeURIComponent(accessToken) + '&';
+            }
 
-                redirectUrl = redirectUrl.slice(0, -1);
+            // Son '&' karakterini kaldırın
+            redirectUrl = redirectUrl.slice(0, -1);
 
-                window.location.href = redirectUrl;
-        
+            // Yönlendirme
+            window.location.href = redirectUrl;
         }
     </script>
 </head>
