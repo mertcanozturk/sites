@@ -4,10 +4,16 @@
     <title>Redirecting...</title>
     <script type="text/javascript">
         // URL parametrelerini yakalayın
-        const params = new URLSearchParams(window.location.search);
-        const code = params.get('code');
-        // Kod ile uygulamaya geri yönlendirin
-        window.location.href = `virtulove://auth?code=${code}`;
+        window.onload = function() {
+            const params = new URLSearchParams(window.location.search);
+            const accessToken = params.get('access_token');
+
+            if (accessToken) {
+                window.location.href = `virtulove://auth?access_token=${accessToken}`;
+            } else {
+                document.body.innerHTML = '<p>Error: Access token parameter not found</p>';
+            }
+        }
     </script>
 </head>
 <body>
